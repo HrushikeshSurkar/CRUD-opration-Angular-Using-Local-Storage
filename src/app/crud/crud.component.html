@@ -1,0 +1,180 @@
+<div class="container m-5 p-5">
+
+
+    <div class="row">
+
+
+        <div class="col-lg-4">
+
+
+
+
+            <form [formGroup]="loginForm">
+
+
+
+                <div class="mb-3 form-group">
+
+
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+
+
+                    <input class="form-control" formControlName="Email">
+
+
+                </div>
+
+
+                <div class="mb-3 form-group">
+
+
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+
+
+                    <input class="form-control" formControlName="Password">
+
+
+                </div>
+
+
+                <div class="m-4 text-center">
+
+
+                    <button type="button" class="btn btn-dark" (click)="clear()">Clear</button>
+
+
+
+                    <button type="button" class="btn btn-success" style="margin-left: 10px ;" (click)="update()">
+
+
+                        <!-- *ngIf="submitclick =='no'"
+                  -->
+
+
+                        Update
+
+
+                    </button>
+
+
+                    <button type="button" class="btn btn-success" style="margin-left: 10px ;" (click)="submit()">
+
+
+                        <!-- *ngIf="submitclick ==
+                  'yes'"> -->
+
+
+                        Submit
+
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-8">
+
+
+
+
+
+
+
+            <table class="table
+                  table-striped">
+
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th scope="col">#</th>
+
+
+                        <th scope="col">Email</th>
+
+
+                        <th scope="col">Password</th>
+
+
+                        <th>Action</th>
+
+
+
+                    </tr>
+
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr *ngFor="let l of loginList; let i = index">
+
+
+                        <td>{{i+1}}</td>
+
+
+                        <td>{{l.Email}}</td>
+
+
+                        <td>{{l.Password}}</td>
+
+
+                        <td>
+
+
+                            <button type="button" class="btn btn-primary m-1" (click)="edit(i)">
+
+
+                                edit
+
+
+                            </button>
+
+
+                            <button type="button" class="btn btn-danger m-1" (click)="delete(i)">
+
+
+                                delete
+
+
+                            </button>
+
+
+                        </td>
+
+
+                    </tr>
+
+
+
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
