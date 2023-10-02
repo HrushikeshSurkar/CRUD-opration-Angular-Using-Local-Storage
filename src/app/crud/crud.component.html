@@ -1,180 +1,55 @@
-<div class="container m-5 p-5">
-
-
+<div class="container mt-5 mb-5">
     <div class="row">
-
-
         <div class="col-lg-4">
-
-
-
-
-            <form [formGroup]="loginForm">
-
-
-
-                <div class="mb-3 form-group">
-
-
+            <form [formGroup]="loginForm" class="bg-light p-4 rounded">
+                <h3 class="mb-4">{{ isEditMode ? 'Edit' : 'Add' }} User</h3>
+                <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-
-
-                    <input class="form-control" formControlName="Email">
-
-
+                    <input class="form-control" formControlName="Email" placeholder="Enter your email">
                 </div>
 
-
-                <div class="mb-3 form-group">
-
-
+                <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-
-
-                    <input class="form-control" formControlName="Password">
-
-
+                    <input [type]="passwordFieldType" class="form-control" formControlName="Password"
+                        placeholder="Enter your password">
                 </div>
 
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="showPasswordCheckbox"
+                        (change)="togglePasswordVisibility()">
+                    <label class="form-check-label" for="showPasswordCheckbox">Show Password</label>
+                </div>
 
-                <div class="m-4 text-center">
-
-
+                <div class="text-center">
                     <button type="button" class="btn btn-dark" (click)="clear()">Clear</button>
-
-
-
-                    <button type="button" class="btn btn-success" style="margin-left: 10px ;" (click)="update()">
-
-
-                        <!-- *ngIf="submitclick =='no'"
-                  -->
-
-
-                        Update
-
-
-                    </button>
-
-
-                    <button type="button" class="btn btn-success" style="margin-left: 10px ;" (click)="submit()">
-
-
-                        <!-- *ngIf="submitclick ==
-                  'yes'"> -->
-
-
-                        Submit
-
-
-                    </button>
-
-
+                    <button type="button" class="btn btn-success ml-2" (click)="submit()">{{ isEditMode ? 'Update' :
+                        'Submit' }}</button>
                 </div>
-
-
             </form>
-
-
         </div>
-
-
-
-
 
         <div class="col-lg-8">
-
-
-
-
-
-
-
-            <table class="table
-                  table-striped">
-
-
-
-                <thead>
-
-
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
                     <tr>
-
-
                         <th scope="col">#</th>
-
-
                         <th scope="col">Email</th>
-
-
                         <th scope="col">Password</th>
-
-
                         <th>Action</th>
-
-
-
                     </tr>
-
-
                 </thead>
-
-
                 <tbody>
-
-
                     <tr *ngFor="let l of loginList; let i = index">
-
-
-                        <td>{{i+1}}</td>
-
-
+                        <td>{{i + 1}}</td>
                         <td>{{l.Email}}</td>
-
-
                         <td>{{l.Password}}</td>
-
-
                         <td>
-
-
-                            <button type="button" class="btn btn-primary m-1" (click)="edit(i)">
-
-
-                                edit
-
-
-                            </button>
-
-
-                            <button type="button" class="btn btn-danger m-1" (click)="delete(i)">
-
-
-                                delete
-
-
-                            </button>
-
-
+                            <button type="button" class="btn btn-primary btn-sm" (click)="edit(i)">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(i)">Delete</button>
                         </td>
-
-
                     </tr>
-
-
-
-
-
                 </tbody>
-
-
             </table>
-
-
         </div>
-
-
     </div>
-
-
 </div>
